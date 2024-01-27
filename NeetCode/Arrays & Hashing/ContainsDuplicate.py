@@ -7,3 +7,6 @@ class Solution:
                 return True
             hashset.add(n)
         return False
+
+result = Solution()
+print(result.containsDuplicate([1,3,5,2]))
