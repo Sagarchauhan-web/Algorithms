@@ -1,3 +1,6 @@
+# Time O(n)
+# Space O(n)
+
 class Solution:
     def containsDuplicate(self, nums):
         hashset = set()
