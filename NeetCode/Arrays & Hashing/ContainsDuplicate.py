@@ -1,6 +1,8 @@
 # Time O(n)
 # Space O(n)
 
+# https://leetcode.com/problems/contains-duplicate/description/
+
 class Solution:
     def containsDuplicate(self, nums):
         hashset = set()

@@ -1,5 +1,9 @@
 # Space O(s + t)
 # Time O(s + t)
+
+# https://leetcode.com/problems/valid-anagram/
+
+
 class Solution(object):
     def isAnagram(self, s, t):
         if len(s) != len(t):
@@ -15,3 +19,7 @@ class Solution(object):
             if countS[i] != countT.get(i, 0):
                 return False
         return True
+
+result = Solution()
+print(result.isAnagram('anagram', 'nagaram'))
+print(result.isAnagram('anagram', 'pagaram'))
