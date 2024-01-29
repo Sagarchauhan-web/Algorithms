@@ -1,3 +1,8 @@
+//  Time O(n)
+//  Space O(n)
+
+// https://leetcode.com/problems/two-sum/description/
+
 function twoSum(nums, target) {
   const checkingHashValue = new Map();
 
