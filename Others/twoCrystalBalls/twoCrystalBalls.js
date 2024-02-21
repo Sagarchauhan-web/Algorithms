@@ -2,7 +2,6 @@
 
 function two_crystal_balls(breaks) {
   const jmpAmount = Math.floor(Math.sqrt(breaks.length));
-  console.log(jmpAmount, 'jmpAmountm');
 
   let i = jmpAmount;
 
