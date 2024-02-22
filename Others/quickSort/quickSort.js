@@ -1,3 +1,5 @@
+//  Time O(nlogn)
+
 /**
  *
  * @param {number[]} arr - Array of numbers to sort

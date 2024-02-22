@@ -1,3 +1,5 @@
+//  Time O(4n) -> O(n) --> every side has 4 options(drop the constants)
+
 /**
  * Represents directional vectors for movement in a 2D grid.
  * Each vector is represented as an array with two elements: [x, y].
