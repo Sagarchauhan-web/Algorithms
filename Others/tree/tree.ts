@@ -57,13 +57,56 @@ class BinarySearchTree<T> {
       return true;
     }
   }
+
+  walk(curr: BinarySearchTreeNode<T> | undefined, path: T[]): T[] {
+    if (!curr) {
+      return path;
+    }
+
+    // pre
+    path.push(curr.value);
+
+    // recurse
+    this.walk(curr.leftNode, path);
+    this.walk(curr.rightNode, path);
+
+    // post
+    return path;
+  }
+  pre_order_search() {
+    return this.walk(this.root, []);
+  }
 }
 
 const tree = new BinarySearchTree();
-tree.add(5);
 tree.add(10);
-tree.add(20);
+tree.add(5);
+tree.add(2);
+tree.add(8);
+tree.add(1);
+tree.add(3);
+tree.add(7);
+tree.add(9);
+tree.add(15);
+tree.add(12);
+tree.add(18);
+tree.add(11);
+tree.add(14);
 tree.add(17);
+tree.add(19);
+tree.add(20);
 
 console.log(tree.contains(17)); // true
 console.log(tree.contains(21)); // false
+
+console.log(tree.pre_order_search());
+
+//            10
+//          /    \
+//        5       15
+//       / \     /  \
+//      2   8   12   18
+//     / \ / \  / \   / \
+//    1  3 7 9 11 14 17 19
+//                        \
+//                         20
