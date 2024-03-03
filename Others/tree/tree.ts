@@ -58,6 +58,7 @@ class BinarySearchTree<T> {
     }
   }
 
+  // All below Deapth first Search
   walkInPreOrder(curr: BinarySearchTreeNode<T> | undefined, path: T[]): T[] {
     if (!curr) {
       return path;
@@ -113,9 +114,47 @@ class BinarySearchTree<T> {
   postOrderSearch() {
     return this.walkInPostOrder(this.root, []);
   }
+
+  // Breadth first search
+  bfs(value: T): boolean {
+    const q = [this.root];
+
+    while (q.length) {
+      const curr = q.shift() as BinarySearchTreeNode<T>;
+
+      if (curr.value === value) {
+        return true;
+      }
+
+      if (curr.leftNode) q.push(curr.leftNode);
+      if (curr.rightNode) q.push(curr.rightNode);
+    }
+
+    return false;
+  }
 }
 
-const tree = new BinarySearchTree();
+function campare(
+  a: BinarySearchTreeNode<number> | undefined,
+  b: BinarySearchTreeNode<number> | undefined,
+): boolean {
+  if (a === undefined && b === undefined) {
+    return true;
+  }
+
+  if (a === undefined || b === undefined) {
+    return false;
+  }
+
+  if (a.value !== b.value) {
+    return false;
+  }
+
+  return campare(a.leftNode, b.leftNode) && campare(a.rightNode, b.rightNode);
+}
+
+// {
+const tree = new BinarySearchTree<number>();
 tree.add(10);
 tree.add(5);
 tree.add(2);
@@ -133,12 +172,33 @@ tree.add(17);
 tree.add(19);
 tree.add(20);
 
-console.log(tree.contains(17)); // true
-console.log(tree.contains(21)); // false
+const tree2 = new BinarySearchTree<number>();
+tree2.add(10);
+tree2.add(5);
+tree2.add(2);
+tree2.add(8);
+tree2.add(1);
+tree2.add(3);
+tree2.add(7);
+tree2.add(9);
+tree2.add(15);
+tree2.add(12);
+tree2.add(18);
+tree2.add(11);
+tree2.add(14);
+tree2.add(17);
+tree2.add(19);
+tree2.add(20);
 
-console.log(tree.preOrderSearch());
-console.log(tree.inOrderSearch());
-console.log(tree.postOrderSearch());
+// console.log(tree.contains(17)); // true
+// console.log(tree.contains(21)); // false
+
+// console.log(tree.preOrderSearch());
+// console.log(tree.inOrderSearch());
+// console.log(tree.postOrderSearch());
+
+console.log(campare(tree.root, tree2.root));
+// }
 
 //            10
 //          /    \
