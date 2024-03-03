@@ -58,7 +58,7 @@ class BinarySearchTree<T> {
     }
   }
 
-  walk(curr: BinarySearchTreeNode<T> | undefined, path: T[]): T[] {
+  walkInPreOrder(curr: BinarySearchTreeNode<T> | undefined, path: T[]): T[] {
     if (!curr) {
       return path;
     }
@@ -67,14 +67,51 @@ class BinarySearchTree<T> {
     path.push(curr.value);
 
     // recurse
-    this.walk(curr.leftNode, path);
-    this.walk(curr.rightNode, path);
+    this.walkInPreOrder(curr.leftNode, path);
+    this.walkInPreOrder(curr.rightNode, path);
 
     // post
     return path;
   }
-  pre_order_search() {
-    return this.walk(this.root, []);
+
+  preOrderSearch() {
+    return this.walkInPreOrder(this.root, []);
+  }
+
+  walkInOrder(curr: BinarySearchTreeNode<T> | undefined, path: T[]): T[] {
+    if (!curr) {
+      return path;
+    }
+
+    // recurse
+    this.walkInOrder(curr.leftNode, path);
+    path.push(curr.value);
+    this.walkInOrder(curr.rightNode, path);
+
+    // post
+    return path;
+  }
+
+  inOrderSearch() {
+    return this.walkInOrder(this.root, []);
+  }
+
+  walkInPostOrder(curr: BinarySearchTreeNode<T> | undefined, path: T[]): T[] {
+    if (!curr) {
+      return path;
+    }
+
+    // recurse
+    this.walkInPostOrder(curr.leftNode, path);
+    this.walkInPostOrder(curr.rightNode, path);
+
+    // post
+    path.push(curr.value);
+    return path;
+  }
+
+  postOrderSearch() {
+    return this.walkInPostOrder(this.root, []);
   }
 }
 
@@ -99,7 +136,9 @@ tree.add(20);
 console.log(tree.contains(17)); // true
 console.log(tree.contains(21)); // false
 
-console.log(tree.pre_order_search());
+console.log(tree.preOrderSearch());
+console.log(tree.inOrderSearch());
+console.log(tree.postOrderSearch());
 
 //            10
 //          /    \
